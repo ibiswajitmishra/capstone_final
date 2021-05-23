@@ -1,0 +1,14 @@
+{
+  "EMAIL_PARAMS":
+  {
+    "EMAIL_HOST_USER": "mrxmrxmrx123mrx@gmail.com",
+    "EMAIL_HOST_PASSWORD": "Ab@123456"
+  },
+  
+  "PARAMS":
+  {
+    "NO_OF_POSTS_PER_PAGE": 10,
+    "DOMAIN_URL": "http://127.0.0.1:8000"
+  }
+
+}
