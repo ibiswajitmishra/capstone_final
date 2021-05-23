@@ -1,1 +1,1 @@
-web: gunicorn MainApp.wsgi --log-file -
+web: gunicorn DISCUS_QUESTION.wsgi --log-file -
