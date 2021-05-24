@@ -2,11 +2,11 @@ from django.db import models
 from django.utils import timezone
 
 class Users (models.Model):
-    name = models.CharField(max_length=30)
-    username = models.CharField(max_length=100)
-    email = models.CharField(max_length=100)
-    password = models.CharField(max_length=30)
-    verify = models.CharField(max_length=100)
+    name = models.CharField(max_length=200)
+    username = models.CharField(max_length=200)
+    email = models.CharField(max_length=200)
+    password = models.CharField(max_length=200)
+    verify = models.CharField(max_length=200)
     user_img = models.ImageField(default='user_profile/user_default.png', upload_to="user_profile")
     location = models.CharField(default=' ',max_length=100)
     date_posted = models.DateTimeField(default=timezone.now)
