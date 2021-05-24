@@ -118,7 +118,7 @@ def Register(request):
                 verifyStr = "".join(lst)
                 
                 # send mail to the user email address
-                subject, from_email, to = 'Verify your Email Address', 'nodedummy328@gmail.com', email
+                subject, from_email, to = 'Verify your Email Address', 'mrxmrxmrx123mrx@gmail.com', email
                 text_content = 'This is an important message.'
                 html_content = f'''
                     <h1 style="font-family: 'Lexend Deca', sans-serif; font-weight: bold; font-size: 30px; color: #8B78E6; text-align: center;"> Discus Question </h1>
@@ -126,7 +126,7 @@ def Register(request):
                         We need to verify your email address. We have sent an email to {email} to verify your address. Please click the link below to verify your email address.
                     </p>
                     <div style="text-align: center; font-family: 'Roboto', sans-serif;">
-                        <a href="{DOMAIN}/verify/{username}/{verifyStr}" style="text-decoration: none; background: #8B78E6; color: #fff; border: none; padding: 10px 20px; padding-bottom: 20px; font-size: 17px;">Verify your Email</a>
+                        <a href="https://u-info.herokuapp.com/verify/{username}/{verifyStr}" style="text-decoration: none; background: #8B78E6; color: #fff; border: none; padding: 10px 20px; padding-bottom: 20px; font-size: 17px;">Verify your Email</a>
                     </div>
                 '''
                 msg = EmailMultiAlternatives(
@@ -159,7 +159,7 @@ def Register(request):
 
                 # After creating user account, redirect to the home page
                 messages.add_message(request, messages.SUCCESS,
-                                     'Your Accound has been created successfully. Now you can login to your account after verifying email.')
+                                     'Your Account has been created successfully. Now you can login to your account after verifying email.')
                 return redirect('home_page')
 
     # if user not logged in simply render register.html page
@@ -359,7 +359,7 @@ def Forget_password(request):
                         If you did not make this request, just ignore this email. Otherwise, please click the button below to change your password.
                     </p>
                     <div style="text-align: center; font-family: 'Roboto', sans-serif;">
-                        <a href="{DOMAIN}/changepassword/{data.username}/{data.change_pass_str}" style="text-decoration: none; background: #8B78E6; color: #fff; border: none; padding: 10px 20px; padding-bottom: 20px; font-size: 17px;">Change password</a>
+                        <a href="/changepassword/{data.username}/{data.change_pass_str}" style="text-decoration: none; background: #8B78E6; color: #fff; border: none; padding: 10px 20px; padding-bottom: 20px; font-size: 17px;">Change password</a>
                     </div>
                 '''
             msg = EmailMultiAlternatives(
@@ -409,7 +409,7 @@ def ChangePassword(request, username, chars):
         if password == "":
             messages.add_message(
                 request, messages.WARNING, 'Please Enter your new password')
-            return redirect(f'{DOMAIN}/changepassword/{username}/{chars}')
+            return redirect(f'/changepassword/{username}/{chars}')
 
         # if password length is less than 8 or greater than 25
         # redirect user to same page
@@ -417,13 +417,13 @@ def ChangePassword(request, username, chars):
         elif (pass_length < 8 or pass_length > 25):
             messages.add_message(
                 request, messages.WARNING, 'Password must be between 8 to 25 characters.')
-            return redirect(f'{DOMAIN}/changepassword/{username}/{chars}')
+            return redirect(f'/changepassword/{username}/{chars}')
 
         # if password field value not equal to confirm password field
         elif password != con_password:
             messages.add_message(
                 request, messages.WARNING, 'Password do not match')
-            return redirect(f'{DOMAIN}/changepassword/{username}/{chars}')
+            return redirect(f'/changepassword/{username}/{chars}')
 
         # if password field value is valid
         else:
@@ -690,13 +690,13 @@ def Answers (request, question_url):
             if answer == "":
                 messages.add_message(
                     request, messages.WARNING, 'Please Enter your answer.')
-                return redirect(f"{DOMAIN}/{question_url}")
+                return redirect(f"/{question_url}")
 
             # if answer input field value is greater than 700 characters
             elif len(answer) > 700:
                 messages.add_message(
                     request, messages.WARNING, 'Please Enter your answer less than 700 characters.')
-                return redirect(f"{DOMAIN}/{question_url}")
+                return redirect(f"/{question_url}")
 
             # if answer input field value is valid
             else:
@@ -720,7 +720,7 @@ def Answers (request, question_url):
                 # display info and redirect to same page
                 messages.add_message(
                     request, messages.SUCCESS, 'Your answer is succesfully submited.')
-                return redirect(f"{DOMAIN}/{question_url}")
+                return redirect(f"/{question_url}")
 
         # if user does not logged in
         else:
@@ -775,7 +775,7 @@ def Comments (request, answer_id):
                 # display message and redirect user. to same page
                 messages.add_message(
                     request, messages.INFO, 'Your comment successfully submited.')
-                return redirect(f"{DOMAIN}/{ans.question_url}")
+                return redirect(f"/{ans.question_url}")
 
         # if user does not logged in
         else:
@@ -896,7 +896,7 @@ def EditAnswer (request, question_url, answer_id):
 
         messages.add_message(
                     request, messages.SUCCESS, 'Your Answer is succesfully Edited.')
-        return redirect(f"{DOMAIN}/{question_url}")
+        return redirect(f"/{question_url}")
 
     # if user doen not submit edit answer form
     else:
@@ -920,7 +920,7 @@ def DeleteAnswer (request, question_url, answer_id):
 
         messages.add_message(
                     request, messages.SUCCESS, 'Your Answer is succesfully Deleted.')
-        return redirect(f"{DOMAIN}/{question_url}")
+        return redirect(f"/{question_url}")
 
     # if user does not submit delete answer form
     else:
@@ -944,7 +944,7 @@ def EditComment (request, question_url, comment_id):
 
         messages.add_message(
                     request, messages.SUCCESS, 'Your Comment is successfully Edited.')
-        return redirect(f"{DOMAIN}/{question_url}")
+        return redirect(f"/{question_url}")
 
     # if user does not submit edit comment form
     else:
@@ -968,7 +968,7 @@ def DeleteComment (request, question_url, comment_id):
 
         messages.add_message(
                     request, messages.SUCCESS, 'Your Comment is successfully Deleted.')
-        return redirect(f"{DOMAIN}/{question_url}")
+        return redirect(f"/{question_url}")
 
     # if user does not submit delete comment form
     else:
@@ -1065,7 +1065,7 @@ def DeleteAccount (request, user_id):
         else:
             messages.add_message(request, messages.WARNING,
                                 'Wrong Password! Please check it perfectly.')
-            return redirect(f"{DOMAIN}/deleteaccount/{user.id}")
+            return redirect(f"/deleteaccount/{user.id}")
 
     # if user logged in
     if request.session.get('email'):

@@ -7,7 +7,7 @@
   
   "PARAMS":
   {
-    "NO_OF_POSTS_PER_PAGE": 10,
+    "NO_OF_POSTS_PER_PAGE": 7,
     "DOMAIN_URL": "https://u-info.herokuapp.com"
   }
 
